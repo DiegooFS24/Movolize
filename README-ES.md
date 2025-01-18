@@ -114,5 +114,25 @@ Gran parte de las mejoras visuales, como el diseño CSS y la estructura del cód
 ### Pasos para la Instalación
 1. **Clonar el repositorio:**
    ```bash
-   git clone https://github.com/tu-usuario/movolize.git
+   git clone https://github.com/DiegooFS24/movolize.git
    cd movolize
+   
+### ⚙️ Configuración de la Base de Datos y API
+
+1. **Configuración de la Base de Datos**  
+   - Importa el archivo `movolize.sql` en tu base de datos MySQL usando tu herramienta preferida (por ejemplo, phpMyAdmin o MySQL Workbench).
+   - Actualiza el archivo `includes/db_conex.php` con las credenciales de tu base de datos:
+     ```php
+     define('DB_HOST', 'tu-servidor-de-base-de-datos');
+     define('DB_USER', 'tu-usuario-de-base-de-datos');
+     define('DB_PASS', 'tu-contraseña-de-base-de-datos');
+     define('DB_NAME', 'movolize');
+     ```
+
+2. **API de Google Maps**  
+   - Obtén una clave de API desde la [Google Cloud Console](https://console.cloud.google.com/).
+   - Activa las APIs de **Google Maps JavaScript** y **Places**.
+   - Reemplaza el marcador de posición en `includes/header.php` con tu clave de API:
+     ```html
+     <script async defer src="https://maps.googleapis.com/maps/api/js?key=TU_CLAVE_DE_API&libraries=places"></script>
+     ```
