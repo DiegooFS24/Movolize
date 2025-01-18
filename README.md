@@ -116,3 +116,23 @@ Much of the visual enhancements, such as the CSS design and code structure, were
    ```bash
    git clone https://github.com/your-username/movolize.git
    cd movolize
+
+### ⚙️ Database and API Setup
+
+1. **Database Configuration**  
+   - Import the `movolize.sql` file into your MySQL database using your preferred tool (e.g., phpMyAdmin or MySQL Workbench).
+   - Update the `includes/db_conex.php` file with your database credentials:
+     ```php
+     define('DB_HOST', 'your-database-host');
+     define('DB_USER', 'your-database-username');
+     define('DB_PASS', 'your-database-password');
+     define('DB_NAME', 'movolize');
+     ```
+
+2. **Google Maps API**  
+   - Obtain an API key from the [Google Cloud Console](https://console.cloud.google.com/).
+   - Enable the **Google Maps JavaScript API** and **Places API**.
+   - Replace the placeholder in `includes/header.php` with your API key:
+     ```html
+     <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places"></script>
+     ```
