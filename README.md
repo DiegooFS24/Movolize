@@ -114,5 +114,5 @@ Much of the visual enhancements, such as the CSS design and code structure, were
 ### Installation Steps
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/DiegooFS24/movolize.git
+   git clone https://github.com/your-username/movolize.git
    cd movolize

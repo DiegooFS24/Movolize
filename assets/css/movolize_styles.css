@@ -1,0 +1,989 @@
+/* =================== 1. Variables de Colores =================== */
+:root {
+    --primary-color: #4caf50;   /* Verde claro */
+    --secondary-color: #03A9F4; /* Azul para el color secundario */
+    --background-light: #f4f4f4;
+    --background-dark: #333;
+    --text-light: #fff;
+    --text-dark: #333;
+    --border-color: #ddd;
+    --error-color: #f44336;     /* Rojo para los errores */
+    --info-color: #03A9F4;      /* Azul para la información */
+    --text-muted: #7e868e;      /* Textos secundarios */
+}
+
+/* =================== 2. Estilos Generales =================== */
+html, body {
+    height: 100% !important;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("../images/fondo-ia.jpeg") !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: var(--text-dark);
+    font-family: Arial, sans-serif;
+}
+
+/* =================== 3. Header =================== */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    position: relative;
+    z-index: 1000;
+}
+.header-container h1 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: white;
+    margin-right: 20px;
+    vertical-align: -8px;
+}
+
+/* =================== 4. Menú Principal =================== */
+.main-menu {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+.main-menu ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+}
+.main-menu li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    transition: background-color 0.3s, color 0.3s;
+    vertical-align: -8px;
+}
+.main-menu li a:hover {
+    background-color: var(--info-color);
+    color: white;
+    border-radius: 5px;
+}
+
+/* =================== 5. Barra de Búsqueda =================== */
+.search-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-42%);
+    display: flex;
+    gap: 10px;
+    max-width: 800px;
+    padding: 10px 0;
+    justify-content: center;
+}
+.search-input,
+.location-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    background-color: var(--text-light);
+    color: var(--text-dark);
+}
+.btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+    color: var(--text-light);
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+.search-submit img {
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    max-width: 30px;
+}
+
+/* =================== 6. Perfil de Usuario =================== */
+.profile-icon img {
+    width: 24px;
+    height: 24px;
+}
+.profile_view_text {
+    text-align: center;
+}
+.hidden {
+    display: none !important;
+}
+.user-menu-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    max-height: 400px;
+}
+.user-menu-toggle {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+/* Menú desplegable de perfil */
+.user-menu {
+    background-color: #1f1f1f;
+    position: absolute;
+    top: 60px;
+    right: 3px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: none; 
+    flex-direction: column;
+    gap: 10px;
+}
+.user-menu li {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+}
+.user-menu li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+.user-menu li a:hover {
+    background-color: var(--info-color);
+    border-radius: 5px;
+}
+
+/* =================== 7. Notificaciones =================== */
+/* Sección general para notificaciones */
+.notification-dot {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    z-index: 1;
+}
+.notification-badge {
+    color: white;
+    border-radius: 50%;
+    padding: 3px 8px;
+    font-size: 12px;
+    margin-left: 5px;
+}
+/* Lista de notificaciones en notifications.php */
+.notification-list {
+    max-width: 800px;
+    margin: 30px auto;
+    background-color: var(--background-light);
+    list-style: none;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.notification-list li {
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-dark);
+    transition: background-color 0.3s;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.notification-list li:last-child {
+    border-bottom: none;
+}
+.notification-list li.unread {
+    background-color: #eafaf1; /* Verde clarito */
+    font-weight: bold;
+}
+.notification-list li.read {
+    background-color: var(--background-light);
+    font-weight: normal;
+}
+.notification-list li:hover {
+    background-color: #ddd;
+}
+.notification-list p {
+    margin: 0;
+}
+.notification-list span {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* =================== 8. Alternador de Tema =================== */
+#theme-toggle {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    vertical-align: -8px;
+}
+#theme-toggle .fi-sc-moon,
+#theme-toggle .fi-rr-sun {
+    font-size: 1.25rem;
+    color: #fff;
+}
+.svg-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+
+/* =================== 9. Contenido Principal =================== */
+main {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+/* =================== 10. Formularios (Generales) =================== */
+form {
+    background-color: var(--background-light);
+    padding: 30px 40px;
+    margin: 30px auto;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+form label {
+    color: var(--text-dark);
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+form .form-control {
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+form .form-control:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0px 0px 6px rgba(3, 169, 244, 0.5);
+}
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="datetime-local"],
+form select,
+form textarea {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 16px;
+    color: var(--text-dark);
+    box-sizing: border-box;
+}
+form textarea {
+    resize: vertical;
+    height: 150px;
+    padding: 12px;
+}
+form button,
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 1rem;
+    width: 100%;
+}
+form button:hover,
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+}
+
+/* =================== 11. Formularios (Específicos) =================== */
+/* Inicio de Sesión y Registro */
+.login_form,
+.register_form {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--background-light);
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.login_form label,
+.register_form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+.login_form input,
+.register_form input,
+.login_form textarea,
+.register_form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--text-dark);
+    background-color: var(--text-light);
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+.login_form button,
+.register_form button {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+.login_form button:hover,
+.register_form button:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Creación de Evento y Generador de Equipos */
+#create-event-form,
+#team-form {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--background-light);
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+#create-event-form label,
+#team-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+#create-event-form input,
+#team-form input,
+#create-event-form textarea,
+#team-form textarea,
+#create-event-form select,
+#team-form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--text-dark);
+    background-color: var(--text-light);
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+#create-event-form button,
+#team-form button {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+#create-event-form button:hover,
+#team-form button:hover {
+    background-color: var(--secondary-color);
+}
+
+/* =================== 12. Tarjetas de Equipos =================== */
+.team-card {
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+.team-card h5 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+.team-card ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.team-card ol li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.team-card ol li:last-child {
+    border-bottom: none;
+}
+.team-card ol li::before {
+    content: "👤";
+    margin-right: 10px;
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    font-size: 1.2em;
+}
+
+/* =================== 13. Resultados de Equipos =================== */
+#teams-result {
+    max-width: 800px; 
+    margin: 30px auto;
+    background-color: var(--background-light);
+    padding: 40px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 500px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+#teams-result.visible {
+    opacity: 1;
+}
+#teams-result h4 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    font-size: 1.5em;
+    color: var(--primary-color);
+}
+#teamsresult h4 a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.8em;
+}
+#teams-result .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    flex-grow: 1;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease-in-out;
+}
+#teams-result.visible .row {
+    opacity: 1;
+    transform: translateY(0);
+}
+#teams-result .col-team {
+    flex: 1 1 calc(33.333% - 40px); 
+    max-width: calc(33.333% - 40px);
+    box-sizing: border-box;
+}
+#teams-result .team-card {
+    background-color: #ffffff; 
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+#teams-result .team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+#teams-result .team-card h5 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.4em;
+}
+#teams-result .team-card ol {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+    counter-reset: li;
+}
+#teams-result .team-card ol li {
+    position: relative;
+    padding-left: 30px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+#teams-result .team-card ol li:last-child {
+    border-bottom: none;
+}
+#teams-result .team-card ol li::before {
+    content: "👤"; 
+    margin-right: 10px;
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    font-size: 1.2em;
+}
+#teams-result .remix-button {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 30px auto 0;
+}
+#teams-result .remix-button:hover {
+    background-color: var(--secondary-color);
+}
+
+/* =================== 14. Tarjetas de Eventos =================== */
+.event-card {
+    background-color: #f5f5f5;
+    position: relative;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+    width: 100%;
+    max-width: 800px !important;
+    margin: 0 auto;
+    z-index: 1;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+}
+.event-card h3 {
+    color: var(--primary-color);
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-align: left;
+}
+event-card p {
+    color: var(--text-dark);
+    font-size: 1em;
+    margin-bottom: 5px;
+    text-align: left;
+}
+/* Contador de Participantes */
+.event-card .participants {
+    font-size: 1em;
+    color: var(--info-color);
+    margin-top: 10px;
+    display: inline-block;
+    align-items: center;
+    position: relative;
+}
+.participantes {
+    width: 18px !important;
+    height: 18px !important;
+    vertical-align: -16%;
+}
+/* Lista de Participantes */
+.participant-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    width: 200px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+.event-card .participants:hover .participant-list {
+    display: block;
+    opacity: 1;
+}
+.participant-list ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+.participant-list ul li {
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+.participant-list ul li:last-child {
+    border-bottom: none;
+}
+/* Botón de Eliminar Evento */
+.event-card .delete-event {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+}
+.delete-event img.svg-icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+.delete-event:focus {
+    outline: none;
+}
+.delete-event:active {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+.delete-event:hover {
+    background: transparent !important;
+    transition: background-color 0.3s ease !important;
+    color: #888;
+}
+
+/* =================== 15. Popup de Confirmación =================== */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.popup-content {
+    background-color: var(--background-light);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 80%;
+}
+.popup-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+/* Botones de Confirmación */
+.popup-content button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+.confirm-button {
+    background-color: var(--info-color);
+    color: var(--text-light);
+}
+.confirm-button:hover {
+    background-color: var(--info-color);
+}
+.cancel-button {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+}
+.cancel-button:hover {
+    background-color: var(--primary-color);
+}
+
+/* =================== 16. Paginación =================== */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+.pagination a {
+    margin: 0 5px;
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+.pagination a.active {
+    background-color: var(--secondary-color);
+    font-weight: bold;
+}
+.pagination a:hover {
+    background-color: var(--secondary-color);
+}
+.pagination a.disabled {
+    color: grey;
+    pointer-events: none;
+}
+
+/* =================== 17. Tarjeta de Perfil =================== */
+.profile-card {
+    margin: 0 auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px; 
+    background-color: var(--background-light);
+}
+.profile-card-title {
+    font-size: 1.6em;
+    margin-bottom: 0.5em;
+    color: var(--primary-color);
+    text-align: center;
+}
+.profile-card-text {
+    font-size: 1em;
+    color: var(--text-dark);
+    text-align: center;
+}
+
+/* =================== 18. Tarjeta de Notificaciones =================== */
+/* Tarjeta contenedora para notifications.php */
+.notification-card {
+    max-width: 800px;
+    margin: 30px auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: var(--background-light);
+    padding: 20px;
+}
+.notification-card h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* =================== 19. Footer =================== */
+footer {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    left: 0;
+    margin-top: auto;
+}
+footer p {
+    margin: 0;
+    padding-right: 10px;
+}
+
+/* =================== 20. Modo Oscuro =================== */
+.dark-mode {
+    background-color: var(--background-dark);
+    color: #fff !important;
+}
+.dark-mode header {
+    background-color: #1f1f1f;
+}
+.dark-mode .main-menu li a {
+    color: #fff; 
+}
+.dark-mode .search-input,
+.dark-mode .location-input {
+    background-color: #1f1f1f;
+    color: #fff;
+    border: 1px solid #444;
+}
+.dark-mode #filter-deporte {
+    color: #495057;
+    background-color: var(--background-dark);
+    border: 1px solid #444;
+}
+.dark-mode h1 {
+    color: #fff;
+}
+
+/* Modo oscuro para formularios y contenedores */
+.dark-mode form,
+.dark-mode #team-form,
+.dark-mode #create-event_form,
+.dark-mode #teams-result,
+.dark-mode .event-card,
+.dark-mode .user-menu {
+    background-color: #2b2b2b;
+    color: #fff !important; 
+}
+/* Modo oscuro para el creador de eventos */
+.dark-mode #create-event-form {
+    background-color: #2b2b2b;
+    color: #fff;
+}
+.dark-mode label {
+    color: #fff !important;
+}
+
+/* Ajuste de contraste adicional en tarjetas */
+.dark-mode .team-card,
+.dark-mode .event-card {
+    color: #fff !important; 
+    border: 1px solid #444;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: var(--background-dark);
+}
+.dark-mode input,
+.dark-mode textarea,
+.dark-mode select {
+    background-color: #333 !important;
+    color: #fff !important;
+    border: 1px solid #444;
+}
+.dark-mode .list-group-item {
+    background-color: #2b2b2b;
+    border: 1px solid #444;
+}
+.dark-mode .remix-button {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+.dark-mode .remix-button:hover {
+    background-color: var(--primary-color);
+}
+
+/* Modo oscuro para la profile-card */
+.dark-mode .profile-card {
+    background-color: #2b2b2b;
+    border: 1px solid #444;
+    color: #fff;
+}
+.dark-mode p.profile-card-text {
+    color: #fff;
+}
+
+/* Modo oscuro para notificaciones */
+.dark-mode .notification-card {
+    background-color: #2b2b2b;
+    color: #fff;
+    border: 1px solid #444;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.dark-mode .notification-list {
+    background-color: #2b2b2b;
+    color: #fff;
+}
+.dark-mode .notification-list li {
+    border-bottom: 1px solid #444;
+}
+.dark-mode .notification-list li:hover {
+    background-color: #444;
+}
+/* .unread, .read se pueden mantener, 
+   pues el color de fondo se aplicó en base. 
+   En modo oscuro, quedarían sobre #2b2b2b, 
+   lo cual ya es aceptable. */
+
+/* =================== 21. Responsividad =================== */
+@media (max-width: 1200px) {
+    #teams-result .col-team {
+        flex: 1 1 calc(50% - 40px); 
+        max-width: calc(50% - 40px);
+    }
+}
+@media (max-width: 992px) {
+    #teams-result .col-team {
+        flex: 1 1 100%; 
+        max-width: 100%;
+    }
+}
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .main-menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    .search-container {
+        max-width: 100%;
+        transform: translateX(-50%);
+    }
+    #team-form,
+    #create-event-form,
+    #teams-result,
+    .event-card {
+        padding: 15px;
+    }
+    #team-form button,
+    .remix-button,
+    #create-event-form button {
+        font-size: 1em;
+    }
+    .team-card h5 {
+        font-size: 1.3em;
+    }
+    .team-card ol li {
+        font-size: 1em;
+    }
+    .team-card .remix-button {
+        width: 100%;
+    }
+    .pagination a {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+    .form-check-inline {
+        flex: 1;
+        max-width: 100%;
+    }
+    .form-check-inline label {
+        white-space: normal; 
+    }
+}
+
+/* =================== 22. Estado Deshabilitado de Botones =================== */
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
